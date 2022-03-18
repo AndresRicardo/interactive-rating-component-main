@@ -1,0 +1,143 @@
+//sizes
+$sizeMobile: 375px;
+$sizeDesktop: 1440px;
+
+//colors primary
+$colorOrange: hsl(25, 97%, 53%);
+
+//colors neutral
+$colorWhite: hsl(0, 0%, 100%);
+$colorLightGrey: hsl(217, 12%, 63%);
+$colorMediumGrey: hsl(216, 12%, 54%);
+$colorDarkBlue: hsl(213, 19%, 18%);
+$colorVeryDarkBlue: hsl(216, 12%, 8%);
+
+$colorBackground: #141519;
+$colorCardBackground: #1f2630;
+$colorBotones: #262f38;
+
+//typography
+$typFontsize: 15px;
+$typFontFamily: "Overpass", sans-serif;
+
+@mixin centrarFlexbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: $typFontFamily;
+}
+
+body {
+    @include centrarFlexbox();
+
+    min-height: 100vh;
+
+    background-color: $colorBackground;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+
+    width: 330px;
+    height: 360px;
+    padding: 0px 25px;
+
+    background-color: $colorCardBackground;
+    border: none;
+    border-radius: 20px;
+
+    h2 {
+        color: $colorWhite;
+    }
+
+    p {
+        color: $colorMediumGrey;
+    }
+}
+
+#ratingCard {
+    .icon {
+        @include centrarFlexbox();
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        background-color: $colorBotones;
+        color: $colorMediumGrey;
+    }
+
+    #ratingScale {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+
+        .ratingValue:hover {
+            background-color: $colorLightGrey;
+            color: $colorWhite;
+        }
+        .ratingValue:focus {
+            background-color: $colorOrange;
+            color: $colorWhite;
+        }
+    }
+
+    #buttonSubmit {
+        background-color: $colorOrange;
+        color: $colorWhite;
+        border: none;
+        border-radius: 30px;
+
+        width: 100%;
+        height: 45px;
+    }
+    #buttonSubmit:active {
+        background-color: $colorWhite;
+        color: $colorOrange;
+    }
+}
+
+#thankyouCard {
+    display: none;
+
+    align-items: center;
+
+    #selection {
+        @include centrarFlexbox();
+
+        border-radius: 20px;
+        background-color: $colorBotones;
+        color: $colorOrange;
+
+        width: 65%;
+        height: 35px;
+    }
+
+    p {
+        text-align: center;
+    }
+}
+
+.attribution {
+    position: absolute;
+    bottom: 5px;
+    font-size: 11px;
+    text-align: center;
+    color: $colorMediumGrey;
+}
+
+.attribution a {
+    color: $colorOrange;
+    text-decoration: none;
+}
