@@ -18,13 +18,16 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
 
 ## Overview
 
-This challenge was made using just HTML, CSS (SASS, Flexbox and Grid) and for first time JavaScrip.
+This challenge was made using just HTML, CSS (SASS, Flexbox and Grid) and for second time JavaScrip.
 
 ### The challenge
 
 Users should be able to:
 
--   View the optimal layout for the site depending on their device's screen size, mainly differentiating 2 sizes: mobile 375px and desktop since 800px
+-   View the optimal layout for the app depending on their device's screen size
+-   See hover states for all interactive elements on the page
+-   Select and submit a number rating
+-   See the "Thank you" card state after submitting a rating
 
 ### Screenshot
 
@@ -34,12 +37,12 @@ Users should be able to:
 
 ### Links
 
--   Solution URL: [Github repository](https://github.com/AndresRicardo/faq-accordion-card-main)
--   Live Site URL: [Github page](https://andresricardo.github.io/faq-accordion-card-main/)
+-   Solution URL: [Github repository](https://github.com/AndresRicardo/interactive-rating-component-main)
+-   Live Site URL: [Github page](https://andresricardo.github.io/interactive-rating-component-main/)
 
 ## My process
 
-Until now i am just learning web development, by now i just know a little bit of html, css (flexbox and grid included), sass and Javascript, not css frameworks, not css post-processores, not Js frameworks.
+Until now i am just learning web development, by now i just know some of html, css (flexbox and grid included), sass and Javascript, not css frameworks, not css post-processores, not Js frameworks.
 
 ### Built with
 
@@ -53,58 +56,39 @@ Until now i am just learning web development, by now i just know a little bit of
 
 ### What I learned
 
-doing this challenge i learned basics of DOM manage with JavaScritp.
+doing this challenge i learned basics of DOM manage with JavaScritp and eventListeners
 
 ```javascript
-console.log("js bien linkeado");
+const ratingCard = document.getElementById("ratingCard");
+const ratingScale = document.getElementById("ratingScale");
+const buttonSubmit = document.getElementById("buttonSubmit");
+const thankyouCard = document.getElementById("thankyouCard");
+const selection = document.getElementById("selection");
 
-let question = document.querySelectorAll(".question");
-let qButton = document.querySelectorAll(".qButton");
-var answer = document.querySelectorAll(".answer");
+let rate = {
+    value: 0,
+};
 
-//para alternar el estado de la respuesta (visible o oculto)
-function togleDisplay(element) {
-    if (element.style.display === "block") {
-        element.style.display = "none";
-    } else element.style.display = "block";
-}
-
-//para alternar el fontWeight de la pregunta (bold o normal)
-function togleWeight(element) {
-    if (element.style.fontWeight !== "bold") element.style.fontWeight = "bold";
-    else element.style.fontWeight = "normal";
-}
-
-//para alternar el icono del qButton (flecha arriba, flecha abajo)
-function togleArrow(element) {
-    if (element.textContent !== "expand_less")
-        element.textContent = "expand_less";
-    else element.textContent = "expand_more";
-}
-
-//ciclo asociar a cada qButton la funcionalidad (mostrar u ocultar respuesta) cuando se le detecte un click
-for (let i = 0; i < qButton.length; i++) {
-    qButton[i].addEventListener("click", (elemento) => {
-        togleDisplay(answer[i]);
-        togleWeight(question[i]);
-        togleArrow(qButton[i]);
-    });
-}
-
-//ciclo asociar a cada pregunta la funcionalidad (mostrar u ocultar respuesta) cuando se le detecte un click
-for (let i = 0; i < question.length; i++) {
-    question[i].addEventListener("click", (elemento) => {
-        togleDisplay(answer[i]);
-        togleWeight(question[i]);
-        togleArrow(qButton[i]);
-    });
-}
+document.addEventListener("click", (event) => {
+    if (
+        event.target.classList.value.search("ratingValue") !== -1 &&
+        event.target.dataset.value !== undefined
+    ) {
+        rate.value = event.target.dataset.value;
+    } else if (event.target.id === "buttonSubmit" && rate.value !== 0) {
+        selection.textContent = `You selected ${rate.value} out of 5`;
+        ratingCard.style.display = "none";
+        thankyouCard.style.display = "flex";
+    } else {
+        rate.value = 0;
+    }
+});
 ```
 
 ### Continued development
 
 Even if to me is more complex design mobile first, i preffer to continue develop of this way.
-By now in short time, my next skills to develop are css frameworks (boostrap or tailwind), css post-processors (postcss), pure Javascript, typescript and css-framework (angular).
+By now in short time, my next skills to develop are deeping in javascript and start with angular, css post-processors (postcss), typescript.
 
 ### Useful resources
 
