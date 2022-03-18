@@ -18,5 +18,7 @@ document.addEventListener("click", (event) => {
         selection.textContent = `You selected ${rate.value} out of 5`;
         ratingCard.style.display = "none";
         thankyouCard.style.display = "flex";
+    } else {
+        rate.value = 0;
     }
 });
